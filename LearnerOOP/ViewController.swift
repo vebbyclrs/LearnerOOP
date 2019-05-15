@@ -14,19 +14,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var learnerGenderLabel: UILabel!
     
     var learnerInstance : LearnerModel? //create copy of LearnerModel
-    
-    
+    var facilitatorInstance : FacilitatorModel?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         learnerInstance = LearnerModel(nameLearner: "Vebby Clarissa", ageLearner: 18, genderLearner: "Female", imageProfileLearner: "imageProfile_189")
+        facilitatorInstance = FacilitatorModel(facilName: "Rara", facilAge: 20, facilGender: "Female", facilImageProfile: "", facilPerk: "Unlimited Starbuck on Friday")
+        
         updateUI()
         // Do any additional setup after loading the view.
     }
     
     func updateUI () {
-        if let instance = learnerInstance {
+        if let instance = facilitatorInstance {
             learnerNameLabel.text = instance.name
             learnerAgeLabel.text = "\(instance.age)"
             learnerGenderLabel.text = instance.gender
@@ -35,8 +36,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func growUpButtonPressed(_ sender: Any) {
-        learnerInstance?.increaseAge()
-        updateUI()
+//        if let instance = learnerInstance {
+//            instance.increaseAge()
+//            instance.coachMentee()
+//            updateUI()
+//        }
+        if let instance = facilitatorInstance {
+            instance.increaseAge()
+            instance.coachMentee()
+            updateUI()
+        }
     }
     
 }
